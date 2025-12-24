@@ -1,5 +1,5 @@
 [build]
-  command = "npm install --prefix backend && CI=false npm install --prefix frontend && CI=false npm run build --prefix frontend"
+  command = "npm install && npm install --prefix backend && CI=false npm install --prefix frontend && CI=false npm run build --prefix frontend"
   publish = "frontend/build"
 
 [build.environment]
