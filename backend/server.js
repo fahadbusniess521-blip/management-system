@@ -2,8 +2,10 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-// Load env vars FIRST
-dotenv.config();
+// Load env vars FIRST (only locally - Netlify injects them automatically)
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 // Now load database (after env vars are loaded)
 const { connectDB } = require('./config/database');

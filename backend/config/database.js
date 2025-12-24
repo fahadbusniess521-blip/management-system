@@ -46,7 +46,7 @@ const connectDB = async () => {
     console.log('Database synchronized');
   } catch (error) {
     console.error('Unable to connect to PostgreSQL:', error.message);
-    process.exit(1);
+    throw error; // Don't exit process in serverless
   }
 };
 
