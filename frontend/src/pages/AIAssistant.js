@@ -30,10 +30,10 @@ const AIAssistant = () => {
 
     try {
       const response = await axios.post('/api/ai/query', { query });
-      const { message, data, type, aiResponse } = response.data;
+      const { message, data, type } = response.data;
 
       let responseText = message;
-      
+
       if (data && Array.isArray(data) && data.length > 0) {
         responseText += '\n\nResults:\n';
         data.slice(0, 5).forEach((item, index) => {
@@ -119,11 +119,10 @@ const AIAssistant = () => {
               className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                  message.type === 'user'
+                className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.type === 'user'
                     ? 'bg-primary-600 text-white'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
-                }`}
+                  }`}
               >
                 <p className="text-sm whitespace-pre-wrap">{message.text}</p>
                 <p className="text-xs mt-1 opacity-70">
